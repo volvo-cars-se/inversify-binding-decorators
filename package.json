@@ -1,18 +1,20 @@
 {
-  "name": "inversify-binding-decorators",
+  "name": "@volvo-cars-se/inversify-binding-decorators",
   "version": "4.0.0",
-  "description": "An utility that allows developers to declare InversifyJS bindings using ES2016 decorators",
+  "description": "An utility that allows developers to declare InversifyJS bindings using ES2016 decorators (hierarchical DI patch)",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
   "typings": "./dts/index.d.ts",
   "scripts": {
-    "test": "gulp",
-    "prepublish": "publish-please guard",
-    "publish-please": "publish-please"
+    "build": "gulp",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/inversify/inversify-binding-decorators.git"
+    "url": "git@github.com:volvo-cars-se/inversify-binding-decorators.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "InversifyJS"

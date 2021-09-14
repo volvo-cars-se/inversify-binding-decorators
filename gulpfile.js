@@ -153,8 +153,7 @@ gulp.task("build",
             "build-lib",
             "build-amd",
             "build-dts"
-        ),
-        "build-test",
+        )
     )
 );
 
@@ -162,6 +161,5 @@ gulp.task("build",
 //* DEFAULT
 //******************************************************************************
 gulp.task("default", gulp.series(
-    "build",
-    "test",
+    "build"
 ));

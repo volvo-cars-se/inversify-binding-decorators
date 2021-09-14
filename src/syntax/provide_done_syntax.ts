@@ -1,13 +1,14 @@
 import interfaces from "../interfaces/interfaces";
 import { decorate, injectable } from "inversify";
 import { METADATA_KEY as inversify_METADATA_KEY } from "inversify";
-import { METADATA_KEY } from "../constants";
 
 class ProvideDoneSyntax implements interfaces.ProvideDoneSyntax {
 
     private _binding: interfaces.BindConstraint;
-    public constructor(binding: interfaces.BindConstraint) {
+    private _metadataKey: Symbol;
+    public constructor(binding: interfaces.BindConstraint, metadataKey: Symbol) {
         this._binding = binding;
+        this._metadataKey = metadataKey;
     }
 
     public done(force?: boolean) {
@@ -39,14 +40,14 @@ class ProvideDoneSyntax implements interfaces.ProvideDoneSyntax {
             };
 
             const previousMetadata: interfaces.ProvideSyntax[] = Reflect.getMetadata(
-                METADATA_KEY.provide,
+                that._metadataKey,
                 Reflect
             ) || [];
 
             const newMetadata = [currentMetadata, ...previousMetadata];
 
             Reflect.defineMetadata(
-                METADATA_KEY.provide,
+                that._metadataKey,
                 newMetadata,
                 Reflect
             );
