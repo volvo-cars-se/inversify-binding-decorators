@@ -1,6 +1,6 @@
 {
   "name": "@volvo-cars-se/inversify-binding-decorators",
-  "version": "4.0.0",
+  "version": "4.0.1",
   "description": "An utility that allows developers to declare InversifyJS bindings using ES2016 decorators (hierarchical DI patch)",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
