@@ -1,9 +1,15 @@
-import autoProvide from "./utils/auto_wire";
-import provide from "./decorator/provide";
-import fluentProvide from "./decorator/fluent_provide";
-import buildProviderModule from "./factory/module_factory";
+import getProvideDecorator from "./decorator/provide";
+import getFluentProvideDecorator from "./decorator/fluent_provide";
+import getProviderModuleBuilder from "./factory/module_factory";
 
-export { fluentProvide };
-export { provide };
-export { autoProvide };
-export { buildProviderModule };
+function createProvideContext() {
+    const metadataKey = Symbol("metadata_key");
+
+    const provide = getProvideDecorator(metadataKey);
+    const fluentProvide = getFluentProvideDecorator(metadataKey);
+    const buildProviderModule = getProviderModuleBuilder(metadataKey);
+
+    return { provide, fluentProvide, buildProviderModule };
+}
+
+export default createProvideContext;
